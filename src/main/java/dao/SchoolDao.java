@@ -1,8 +1,8 @@
 package dao;
-import models.School
+import models.School;
 
 
-public class SchoolDao {
+public interface SchoolDao {
 
     ///..CREATE..///
     void add(School school);
