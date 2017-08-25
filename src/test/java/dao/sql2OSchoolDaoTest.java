@@ -34,7 +34,7 @@ public class sql2OSchoolDaoTest {
         School school = setUpSchool();
         int schoolId = school.getId();
         schoolDao.add(school);
-        assertEquals(schoolId, school.getId());
+        assertNotEquals(schoolId, school.getId());
     }
 
 }
