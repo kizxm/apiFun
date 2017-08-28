@@ -24,7 +24,7 @@ public class Sql2oSchoolDao implements SchoolDao {
                    .bind(school)
                    .executeUpdate()
                    .getKey();
-           school.setId(id);
+           school.setTypeId(id);
        }catch (Sql2oException ex) {
            System.out.println(ex);
        }
@@ -61,4 +61,56 @@ public class Sql2oSchoolDao implements SchoolDao {
             }
             return courses;
         }
+    @Override
+    public List<School> getAll() {
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM school")
+                    .executeAndFetch(School.class);
+        }
+    }
+    @Override
+    public School findById(int typeId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM school WHERE typeId = :typeId")
+                    .addParameter("typeId", typeId)
+                    .executeAndFetchFirst(School.class);
+        }
+    }
+    @Override
+    public void update(int typeId, String newSchoolType) {
+        String sql = "UPDATE school SET (schoolType) = (:schoolType) WHERE typeId = :typeId";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("typeId", typeId)
+                    .addParameter("schoolType", newSchoolType)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+    @Override
+    public void deleteByTypeId(int typeId) {
+        String sql = "DELETE FROM school WHERE typeId = :typeId";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("typeId", typeId)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+    @Override
+    public void deleteAllSchools() {
+        String sql = "DELETE from school";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+
+
+
     }

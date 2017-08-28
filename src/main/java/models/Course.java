@@ -4,7 +4,7 @@ public class Course extends School {
     private String courseTitle;
     private String courseDescription;
     private int schoolId;
-    private int id;
+    private int courseId;
 
     public Course(String schoolType, String courseTitle, String courseDescription) {
         super(schoolType);
@@ -13,20 +13,16 @@ public class Course extends School {
     }
 
     ///..GETTERS & SETTERS..///
-    public String getCourseTitle() {
-        return courseTitle;
-    }
-    public String getCourseDescription() {
-        return courseDescription;
-    }
+    public String getCourseTitle() {return courseTitle;}
+    public String getCourseDescription() { return courseDescription;}
     public int getSchoolId() {
         return schoolId;
     }
     public int getId() {
-        return id;
+        return courseId;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setCourseId(int id) {
+        this.courseId = id;
     }
     ///....///
 
@@ -35,18 +31,15 @@ public class Course extends School {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
 
         Course course = (Course) o;
 
         if (!courseTitle.equals(course.courseTitle)) return false;
         return courseDescription.equals(course.courseDescription);
     }
-
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + courseTitle.hashCode();
         result = 31 * result + courseDescription.hashCode();
         return result;
     }

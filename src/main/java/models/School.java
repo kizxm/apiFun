@@ -2,7 +2,7 @@ package models;
 
 public class School {
     private String schoolType;
-    private int id;
+    private int typeId;
 
     public School(String schoolType){
         this.schoolType = schoolType;
@@ -17,10 +17,10 @@ public class School {
         this.schoolType = schoolType;
     }
     public int getId() {
-        return id;
+        return typeId;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setTypeId(int id) {
+        this.typeId = id;
     }
     ///....///
 
@@ -32,14 +32,11 @@ public class School {
 
         School school = (School) o;
 
-        if (id != school.id) return false;
         return schoolType.equals(school.schoolType);
     }
-
     @Override
     public int hashCode() {
         int result = schoolType.hashCode();
-        result = 31 * result + id;
         return result;
     }
     ///....///
