@@ -11,16 +11,16 @@ import static org.junit.Assert.*;
 
 public class sql2OSchoolDaoTest {
     private Sql2oSchoolDao schoolDao;
+    private Sql2oCourseDao courseDao;
     private Connection conn;
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         schoolDao = new Sql2oSchoolDao(sql2o);
-//        courseDao = new Sql2oCourseDao(sql2o);
+        courseDao = new Sql2oCourseDao(sql2o);
         conn = sql2o.open();
     }
-
     @After
     public void tearDown() throws Exception {
         conn.close();
@@ -28,6 +28,10 @@ public class sql2OSchoolDaoTest {
     public School setUpSchool(){
         return new School("Private-School");
     }
+    public School setUpSchool2(){
+        return new School("Public-School");
+    }
+
 
     @Test
     public void newSchoolReturnsId_True() throws Exception {
@@ -67,5 +71,15 @@ public class sql2OSchoolDaoTest {
         schoolDao.add(school);
         schoolDao.deleteByTypeId(school.getTypeId());
         assertEquals(0, schoolDao.getAll().size());
+    }
+    @Test
+    public void deleteAllSchools() throws Exception {
+        School school = setUpSchool();
+        School school2 = setUpSchool2();
+        schoolDao.add(school);
+        schoolDao.add(school2);
+        int daoSize = schoolDao.getAll().size();
+        schoolDao.deleteAllSchools();
+        assertTrue(daoSize > 0 && daoSize > schoolDao.getAll().size());
     }
 }
