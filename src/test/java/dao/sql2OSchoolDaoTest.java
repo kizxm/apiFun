@@ -32,11 +32,17 @@ public class sql2OSchoolDaoTest {
     @Test
     public void newSchoolReturnsId_True() throws Exception {
         School school = setUpSchool();
-        int schoolId = school.getId();
+        int schoolId = school.getTypeId();
         schoolDao.add(school);
-        assertNotEquals(schoolId, school.getId());
+        assertNotEquals(schoolId, school.getTypeId());
     }
-
+    @Test
+    public void findSchoolByTypeId_True() throws Exception {
+        School school = setUpSchool();
+        schoolDao.add(school);
+        School foundSchool = schoolDao.findById(school.getTypeId());
+        assertEquals(school, foundSchool);
+    }
 
 
 }

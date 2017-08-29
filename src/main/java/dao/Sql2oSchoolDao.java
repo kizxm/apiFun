@@ -34,8 +34,8 @@ public class Sql2oSchoolDao implements SchoolDao {
         String query = "INSERT INTO school_students(schoolId, courseId) VALUES (:schoolId, :courseId)";
         try(Connection con = sql2o.open()) {
             con.createQuery(query)
-                    .addParameter("schoolId", school.getId())
-                    .addParameter("courseId", course.getId())
+                    .addParameter("schoolId", school.getTypeId())
+                    .addParameter("courseId", course.getTypeId())
                     .executeUpdate();
         } catch (Sql2oException e){
             System.out.println(e);

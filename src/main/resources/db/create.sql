@@ -1,7 +1,7 @@
 SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS school (
-    id int PRIMARY KEY auto_increment,
+    typeId int PRIMARY KEY auto_increment,
     schoolType VARCHAR,
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS students (
 );
 
 CREATE TABLE IF NOT EXISTS courses (
-    id int PRIMARY KEY auto_increment,
+    courseId int PRIMARY KEY auto_increment,
     courseTitle VARCHAR,
     courseDescription VARCHAR,
     schoolId INTEGER

@@ -18,7 +18,7 @@ public class Course extends School {
     public int getSchoolId() {
         return schoolId;
     }
-    public int getId() {
+    public int getCourseId() {
         return courseId;
     }
     public void setCourseId(int id) {

@@ -16,9 +16,7 @@ public class School {
     public void setSchoolType(String schoolType) {
         this.schoolType = schoolType;
     }
-    public int getId() {
-        return typeId;
-    }
+    public int getTypeId() { return typeId; }
     public void setTypeId(int id) {
         this.typeId = id;
     }

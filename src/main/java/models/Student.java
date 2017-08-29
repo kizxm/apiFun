@@ -37,6 +37,18 @@ public class Student extends School{
     public int getId() {
         return id;
     }
+    public void setId(int id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setAge(int age) { this.age = age; }
+    public void setGender(String gender) { this.gender = gender; }
+
+    public void setSchoolGroup(String schoolGroup) {
+        this.schoolGroup = schoolGroup;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
     ///....///
 
     ///..OVERRIDES..///
@@ -45,7 +57,6 @@ public class Student extends School{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
 
         Student student = (Student) o;
 
