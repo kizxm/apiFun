@@ -47,4 +47,11 @@ public class Sql2oCourseDaoTest {
         Course foundCourse = courseDao.findById(course.getCourseId());
         assertEquals(course, foundCourse);
     }
+    @Test
+    public void returnAllCourses_True() throws Exception {
+        Course course = setUpCourse();
+        courseDao.add(course);
+        courseDao.add(new Course("Public", "Humanities","Study of human culture."));
+        assertEquals(2, courseDao.getAll().size());
+    }
 }
