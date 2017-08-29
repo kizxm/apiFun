@@ -13,7 +13,7 @@ public class Sql2oCourseDaoTest {
     private Sql2o sql2o;
     private Sql2oCourseDao courseDao;
     private Sql2oStudentDao studentDao;
-    private Connection con;
+    private Connection conn;
 
     @Before
     public void setUp() throws Exception {
@@ -21,23 +21,30 @@ public class Sql2oCourseDaoTest {
         sql2o = new Sql2o(connectionString, "", "");
         courseDao = new Sql2oCourseDao(sql2o);
         studentDao = new Sql2oStudentDao(sql2o);
-        con = sql2o.open();
+        conn = sql2o.open();
     }
     @After
     public void tearDown() throws Exception {
-        con.close();
+        conn.close();
     }
     public Course setUpCourse() {
         return new Course("Private", "Math Class", "Simple math class");
     }
 
     @Test
-    public void addCourseWithId() throws Exception {
+    public void addCourseWithIdReturn_True() throws Exception {
         Course course = setUpCourse();
         courseDao.add(course);
         assertEquals(1, course.getCourseId());
-        assertEquals("Private", course.getSchoolType());
-        assertEquals("Math Class", course.getCourseTitle());
         assertEquals("Simple math class", course.getCourseDescription());
+        assertEquals("Math Class", course.getCourseTitle());
+        assertEquals("Private", course.getSchoolType());
+    }
+    @Test
+    public void findCourseByIdReturn_True() throws Exception {
+        Course course = setUpCourse();
+        courseDao.add(course);
+        Course foundCourse = courseDao.findById(course.getCourseId());
+        assertEquals(course, foundCourse);
     }
 }

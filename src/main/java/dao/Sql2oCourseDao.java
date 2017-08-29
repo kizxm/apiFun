@@ -16,7 +16,7 @@ public class Sql2oCourseDao implements CourseDao{
 
     @Override
     public void add(Course course) {
-        String query = "INSERT INTO courses (courseTitle, courseDescription, schoolId) VALUES (:courseTitle, :courseDescription, :SchoolId)";
+        String query = "INSERT INTO courses (courseTitle, courseDescription, schoolId) VALUES (:courseTitle, :courseDescription, :schoolId)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(query)
                     .bind(course)

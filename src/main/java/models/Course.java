@@ -39,7 +39,7 @@ public class Course extends School {
     }
     @Override
     public int hashCode() {
-        int result = super.hashCode();
+        int result = courseTitle.hashCode();
         result = 31 * result + courseDescription.hashCode();
         return result;
     }

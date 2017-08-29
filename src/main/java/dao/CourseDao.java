@@ -2,6 +2,7 @@ package dao;
 
 import models.Course;
 import models.Student;
+import models.School;
 
 import java.util.List;
 
