@@ -14,7 +14,7 @@ public class Sql2oCourseDaoTest {
     private Sql2oCourseDao courseDao;
     private Sql2oStudentDao studentDao;
     private Connection conn;
-
+    ///-------------------------------------///
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
@@ -33,6 +33,7 @@ public class Sql2oCourseDaoTest {
     public Course setUpCourse2() {
         return new Course("Independent", "Sewing Class", "Basics of sewing");
     }
+    ///-------------------------------------///
 
     @Test
     public void addCourseWithIdReturn_True() throws Exception {

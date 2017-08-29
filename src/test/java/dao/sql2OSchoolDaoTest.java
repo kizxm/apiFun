@@ -17,6 +17,7 @@ public class sql2OSchoolDaoTest {
     private Sql2oSchoolDao schoolDao;
     private Sql2oCourseDao courseDao;
     private Connection conn;
+    ///-------------------------------------///
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
@@ -35,6 +36,7 @@ public class sql2OSchoolDaoTest {
     public School setUpSchool2(){ return new School("Public-School"); }
     public Course setUpCourse(){return new Course("Private", "Math", "Basic math class");}
 
+    ///-------------------------------------///
 
     @Test
     public void newSchoolReturnsId_True() throws Exception {
