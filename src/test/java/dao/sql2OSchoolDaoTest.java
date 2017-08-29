@@ -53,5 +53,12 @@ public class sql2OSchoolDaoTest {
     public void noTypesReturns_0() throws Exception {
         assertEquals(0, schoolDao.getAll().size());
     }
-
+    @Test
+    public void updateSchoolType_True() throws Exception {
+        School school = setUpSchool();
+        schoolDao.add(school);
+        schoolDao.update(school.getTypeId(), "Catholic");
+        School newType = schoolDao.findById(school.getTypeId());
+        assertNotEquals(school, newType.getSchoolType());
+    }
 }
