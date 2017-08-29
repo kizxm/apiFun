@@ -1,30 +1,30 @@
 # School Compiler
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 #### School Compiler August 25, 2017
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 #### By Kira Loo
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 ## Description
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 _This website allows the user to create a new School and Student for an API database, you can add students to your school or change your school's name and other details._
 
 ## Setup/Installation Requirements
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 You will need Gradle installed on your device.
 
-* ->✦ Clone the repo from git hub.
-* ->✦ Open in your favorite editor
-* ->✦ Checkout all the good stuff !
+* ->✻ Clone the repo from git hub.
+* ->✻ Open in your favorite editor
+* ->✻ Checkout all the good stuff !
 
 ## Specifications
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
-| ✦ Behavior      | ✦ Example Input      | ✦ Example Output       |
+| ✻ Behavior      | ✻ Example Input      | ✻ Example Output       |
 | ------------- |	------------- |	------------- |
 | Add A Type of School | schoolType: "Private" | "Private" |
 | ------------- |	------------- |	------------- |
@@ -34,7 +34,7 @@ You will need Gradle installed on your device.
 | ------------- |	------------- |	------------- |
 
 ## EASY JSON/POSTMAN INPUTS 
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 
 SCHOOL
@@ -64,12 +64,12 @@ localhost:4567/courses/new
 }
 
 ## Known Bugs
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 _none known._
 
 ## Technologies Used
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 
 * _IntelliJ_
 * _Java_
@@ -79,5 +79,5 @@ _none known._
 
 
 ### License
-✦✦✦✦✦✦✦✦✦✦✦✦
+✻✻✻✻✻✻✻✻✻✻✻
 Copyright &copy; 2017 _Kira Loo_
