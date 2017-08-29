@@ -54,4 +54,20 @@ public class Sql2oCourseDaoTest {
         courseDao.add(new Course("Public", "Humanities","Study of human culture."));
         assertEquals(2, courseDao.getAll().size());
     }
+    @Test
+    public void updatingCourseUpdatesTitle_True() throws Exception {
+        Course course = setUpCourse();
+        courseDao.add(course);
+        courseDao.update(course.getCourseId(), "Science", "Basic science class.");
+        Course updatedCourse = courseDao.findById(course.getCourseId());
+        assertEquals("Science", updatedCourse.getCourseTitle());
+    }
+    @Test
+    public void updatingCourseUpdatesDescription_True() throws Exception {
+        Course course = setUpCourse();
+        courseDao.add(course);
+        courseDao.update(course.getCourseId(), "Science", "Basic science class.");
+        Course updatedCourse = courseDao.findById(course.getCourseId());
+        assertEquals("Basic science class.", updatedCourse.getCourseDescription());
+    }
 }
