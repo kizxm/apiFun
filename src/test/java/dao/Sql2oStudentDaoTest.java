@@ -81,4 +81,15 @@ public class Sql2oStudentDaoTest {
         studentDao.deleteById(student.getId());
         assertEquals(1, studentDao.getAll().size());
     }
+    @Test
+    public void deleteAllStudentsDeletesAll_True() throws Exception {
+        Student student = setUpStudent();
+        Student student2 = setUpStudent();
+        studentDao.add(student);
+        studentDao.add(student2);
+        int daoSize = studentDao.getAll().size();
+        studentDao.deleteAllStudents();
+        assertTrue(daoSize > 0 && daoSize > studentDao.getAll().size());
+
+    }
 }
