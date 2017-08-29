@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface StudentDao {
 
+    ///-------------------------------------///
     ///..CREATE..///
     void add (Student student);
 
@@ -19,4 +20,5 @@ public interface StudentDao {
     ///..DELETE..///
     void deleteById(int id);
     void deleteAllStudents();
+    ///-------------------------------------///
 }

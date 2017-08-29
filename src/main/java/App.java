@@ -26,7 +26,6 @@ public class App {
         schoolDao = new Sql2oSchoolDao(sql2o);
         studentDao = new Sql2oStudentDao(sql2o);
         conn = sql2o.open();
-
         ///-------------------------------------///
 
         ///..school CREATE..///
@@ -36,6 +35,7 @@ public class App {
             response.status(201);
             return gson.toJson(school);
         });
+        ///-------------------------------------///
         ///..school READ..///
         get("/school", "application/json", (request, response) -> {
             return gson.toJson(schoolDao.getAll());
@@ -48,6 +48,7 @@ public class App {
             }
             return gson.toJson(school);
         });
+        ///-------------------------------------///
         ///..school UPDATE..///
         post("/school/:id/update", "application/json", (request, response) -> {
             int schoolId = Integer.parseInt(request.params("id"));
@@ -56,6 +57,7 @@ public class App {
             response.status(201);
             return gson.toJson(school);
         });
+        ///-------------------------------------///
         ///..school DELETE..///
         get("/school/:id/delete", "application/json", (request, response) -> {
             int schoolId = Integer.parseInt(request.params("id"));
@@ -66,6 +68,7 @@ public class App {
             schoolDao.deleteAllSchools();
             return schoolDao.getAll().size();
         });
+        ///-------------------------------------///
         ///..student CREATE..///
         post("/students/new", "application/json", (request, response) -> {
             Student student = gson.fromJson(request.body(), Student.class);
@@ -73,6 +76,7 @@ public class App {
             response.status(201);
             return gson.toJson(student);
         });
+        ///-------------------------------------///
         ///..student READ..///
         get("/students", "application/json", (request, response) -> {
             return gson.toJson(studentDao.getAll());
@@ -85,6 +89,7 @@ public class App {
             }
             return gson.toJson(student);
         });
+        ///-------------------------------------///
         ///..student UPDATE..///
         post("/students/:id/update", "application/json", (request, response) -> {
             int studentId = Integer.parseInt(request.params("id"));
@@ -93,6 +98,7 @@ public class App {
             response.status(201);
             return gson.toJson(student);
         });
+        ///-------------------------------------///
         ///..student DELETE..///
         get("/students/:id/delete", "application/json", (request, response) -> {
             int studentId = Integer.parseInt(request.params("id"));
@@ -103,6 +109,7 @@ public class App {
             studentDao.deleteAllStudents();
             return studentDao.getAll().size();
         });
+        ///-------------------------------------///
         ///..course CREATE..///
         post("/courses/new", "application/json", (request, response) -> {
             Course course = gson.fromJson(request.body(), Course.class);
@@ -110,6 +117,7 @@ public class App {
             response.status(201);
             return gson.toJson(course);
         });
+        ///-------------------------------------///
         ///..course READ..///
         get("/courses", "application/json", (request, response) -> {
             return gson.toJson(courseDao.getAll());
@@ -122,5 +130,81 @@ public class App {
             }
             return gson.toJson(course);
         });
+        ///-------------------------------------///
+        ///..course UPDATE..///
+        post("/courses/:id/update", "application/json", (request, response) -> {
+            int courseId = Integer.parseInt(request.params("id"));
+            Course course = gson.fromJson(request.body(), Course.class);
+            courseDao.update(courseId, course.getCourseTitle(), course.getCourseDescription());
+            response.status(201);
+            return gson.toJson(course);
+        });
+        ///-------------------------------------///
+        ///..course DELETE..///
+        get("/courses/:id/delete", "application/json", (request, response) -> {
+            int courseId = Integer.parseInt(request.params("id"));
+            courseDao.deleteById(courseId);
+            return courseId;
+        });
+        get("/courses/:id/delete/all", "application/json", (request, response) -> {
+            courseDao.deleteAllCourses();
+            return courseDao.getAll().size();
+        });
+        ///-------------------------------------///
+        ///..ADD COURSE TO TYPE..///
+        post("/school/:schoolId/courses/new", "application/json", (request, response) -> {
+            int schoolId = Integer.parseInt(request.params("schoolId"));
+            Course course = gson.fromJson(request.body(), Course.class);
+            course.setTypeId(schoolId);
+            courseDao.add(course);
+            response.status(201);
+            return gson.toJson(course);
+        });
+        ///-------------------------------------///
+        ///..READ COURSE TO TYPE..///
+        get("/school/:id/courses", "application/json", (request, response) -> {
+            int schoolId = Integer.parseInt(request.params("id"));
+            schoolDao.getAllCoursesForTypes(schoolId);
+            return gson.toJson(schoolDao.getAllCoursesForTypes(schoolId));
+        });
+        ///-------------------------------------///
+        ///..READ TYPE TO COURSE..///
+        get("/courses/:id/school", "application/json", (request, response) -> {
+            int courseId = Integer.parseInt(request.params("id"));
+            courseDao.getAllTypesByCourse(courseId);
+            return gson.toJson(courseDao.getAllTypesByCourse(courseId));
+        });
+        ///-------------------------------------///
+        ///..ADD STUDENTS TO COURSE..///
+        post("/courses/:id/students/:studentId", "application/json", (request, response) -> {
+            int courseId = Integer.parseInt(request.params("id"));
+            int studentId = Integer.parseInt(request.params("studentId"));
+            Student student = studentDao.findById(studentId);
+            Course course = courseDao.findById(courseId);
+            courseDao.addStudentToCourse(course, student);
+            response.status(201);
+            return gson.toJson(courseDao.getAllStudentsByCourse(courseId));
+        });
+        get("/tracks/:id/students", "application/json", (request, response) -> {
+            int courseId = Integer.parseInt(request.params("id"));
+            courseDao.getAllStudentsByCourse(courseId);
+            return gson.toJson(courseDao.getAllStudentsByCourse(courseId));
+
+        });
+        ///-------------------------------------///
+        ///..OTHER..///
+        after((request, response) -> {
+            response.type("application/json");
+        });
+        exception(ApiException.class, (exc, req, res) -> {
+            ApiException err = (ApiException) exc;
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", err.getStatusCode());
+            jsonMap.put("errorMessage", err.getMessage());
+            res.type("application/json");
+            res.status(err.getStatusCode());
+            res.body(gson.toJson(jsonMap));
+        });
+        ///-------------------------------------///
     }
 }

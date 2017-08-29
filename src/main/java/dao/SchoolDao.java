@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface SchoolDao {
 
+    ///-------------------------------------///
     ///..CREATE..///
     void add(School school);
     void addCourseToType(School school, Course course);
@@ -23,4 +24,5 @@ public interface SchoolDao {
     ///..DELETE..///
     void deleteByTypeId(int typeId);
     void deleteAllSchools();
+    ///-------------------------------------///
 }
