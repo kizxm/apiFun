@@ -43,6 +43,12 @@ public class sql2OSchoolDaoTest {
         School foundSchool = schoolDao.findById(school.getTypeId());
         assertEquals(school, foundSchool);
     }
+    @Test
+    public void returnAllSchoolTypes_True() throws Exception {
+        School school = setUpSchool();
+        schoolDao.add(school);
+    assertEquals(1, schoolDao.getAll().size());
+    }
 
 
 }
