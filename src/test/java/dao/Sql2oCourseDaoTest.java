@@ -30,6 +30,9 @@ public class Sql2oCourseDaoTest {
     public Course setUpCourse() {
         return new Course("Private", "Math Class", "Simple math class");
     }
+    public Course setUpCourse2() {
+        return new Course("Independent", "Sewing Class", "Basics of sewing");
+    }
 
     @Test
     public void addCourseWithIdReturn_True() throws Exception {
@@ -69,5 +72,18 @@ public class Sql2oCourseDaoTest {
         courseDao.update(course.getCourseId(), "Science", "Basic science class.");
         Course updatedCourse = courseDao.findById(course.getCourseId());
         assertEquals("Basic science class.", updatedCourse.getCourseDescription());
+    }
+    @Test
+    public void noCoursesReturns_0() throws Exception {
+        assertEquals(0, courseDao.getAll().size());
+    }
+    @Test
+    public void deleteByIdDeletes_True() throws Exception {
+        Course course = setUpCourse();
+        Course course2 = setUpCourse2();
+        courseDao.add(course);
+        courseDao.add(course2);
+        courseDao.deleteById(course.getCourseId());
+        assertEquals(1, courseDao.getAll().size());
     }
 }
