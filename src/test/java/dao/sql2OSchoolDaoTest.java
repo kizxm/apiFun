@@ -61,4 +61,11 @@ public class sql2OSchoolDaoTest {
         School newType = schoolDao.findById(school.getTypeId());
         assertNotEquals(school, newType.getSchoolType());
     }
+    @Test
+    public void deleteByTypeIdDeletesAllReturns_0() throws Exception {
+        School school = setUpSchool();
+        schoolDao.add(school);
+        schoolDao.deleteByTypeId(school.getTypeId());
+        assertEquals(0, schoolDao.getAll().size());
+    }
 }
