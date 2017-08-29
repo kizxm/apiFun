@@ -1,11 +1,15 @@
 package dao;
 
+import models.Course;
 import models.School;
 import org.junit.After;
 import org.junit.Before;
 import org.sql2o.Sql2o;
 import org.junit.Test;
 import org.sql2o.Connection;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -28,9 +32,8 @@ public class sql2OSchoolDaoTest {
     public School setUpSchool(){
         return new School("Private-School");
     }
-    public School setUpSchool2(){
-        return new School("Public-School");
-    }
+    public School setUpSchool2(){ return new School("Public-School"); }
+    public Course setUpCourse(){return new Course("Private", "Math", "Basic math class");}
 
 
     @Test

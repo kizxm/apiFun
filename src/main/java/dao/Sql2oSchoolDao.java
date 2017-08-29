@@ -50,7 +50,7 @@ public class Sql2oSchoolDao implements SchoolDao {
                     .addParameter("schoolId", schoolId)
                     .executeAndFetch(Integer.class);
             for (Integer courseId : allCourseIds) {
-                String query2 = "SELECT * from course WHERE id = courseId";
+                String query2 = "SELECT * from courses WHERE courseId = :courseId";
                 courses.add(
                         con.createQuery(query2)
                                 .addParameter("courseId", courseId)
