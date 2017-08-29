@@ -86,4 +86,11 @@ public class Sql2oCourseDaoTest {
         courseDao.deleteById(course.getCourseId());
         assertEquals(1, courseDao.getAll().size());
     }
+    @Test
+    public void idReturnsCorrectly_True() throws Exception {
+        Course course = setUpCourse();
+        int origId = course.getSchoolId();
+        courseDao.add(course);
+        assertEquals(origId, courseDao.findById(course.getCourseId()).getSchoolId());
+    }
 }
