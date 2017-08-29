@@ -46,5 +46,12 @@ public class Sql2oStudentDaoTest {
         assertEquals("Highschool", student.getSchoolGroup());
         assertEquals(10, student.getGrade());
     }
+    @Test
+    public void allStudentSizeReturns_2() throws Exception {
+        Student student = setUpStudent();
+        studentDao.add(student);
+        studentDao.add(new Student("Private", "Henry", 14, "male", "Highschool", 9));
+        assertEquals(2, studentDao.getAll().size());
+    }
 
 }
