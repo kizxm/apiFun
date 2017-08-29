@@ -31,15 +31,17 @@ You will need Gradle installed on your device.
 
 ## EASY JSON/POSTMAN INPUTS 
 ✦✦✦✦✦✦✦✦✦✦✦✦
+
+
 SCHOOL
+
 localhost:4567/school/new
 {
-	
 "schoolType": "Private"
-
 }
 
 STUDENT
+
 localhost:4567/students/new
 {
   "name" : "Bob",
@@ -50,6 +52,7 @@ localhost:4567/students/new
 }
 
 COURSE
+
 localhost:4567/courses/new
 {
   "courseTitle": "Math",
