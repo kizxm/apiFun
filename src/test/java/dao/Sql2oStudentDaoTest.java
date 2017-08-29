@@ -60,5 +60,17 @@ public class Sql2oStudentDaoTest {
         Student findStudent = studentDao.findById(student.getId());
         assertEquals(student, findStudent);
     }
+    @Test
+    public void updateUpdates_Correctly() throws Exception {
+        Student student = setUpStudent();
+        studentDao.add(student);
+        studentDao.update(student.getId(),  "Bob", 20, "non-binary", "Highschool", 10);
+        Student oldStudent = studentDao.findById(student.getId());
+        assertEquals("Bob", oldStudent.getName());
+        assertEquals(20, oldStudent.getAge());
+        assertEquals("non-binary", oldStudent.getGender());
+        assertEquals("Highschool", oldStudent.getSchoolGroup());
+        assertEquals(10, oldStudent.getGrade());
+    }
 
 }
