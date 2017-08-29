@@ -25,9 +25,13 @@ You will need Gradle installed on your device.
 ✦✦✦✦✦✦✦✦✦✦✦✦
 
 | ✦ Behavior      | ✦ Example Input      | ✦ Example Output       |
+| ------------- |	------------- |	------------- |
 | Add A Type of School | schoolType: "Private" | "Private" |
+| ------------- |	------------- |	------------- |
 | Add A Course | courseTitle: "Math" courseDescription: "basic math." | "Math", "basic math." |
+| ------------- |	------------- |	------------- |
 | Add Student | name: "jim", age: "15", gender: "male", schoolType: "Private", grade: "10" | "jim", "15", "male", "Private", "10" |
+| ------------- |	------------- |	------------- |
 
 ## EASY JSON/POSTMAN INPUTS 
 ✦✦✦✦✦✦✦✦✦✦✦✦
