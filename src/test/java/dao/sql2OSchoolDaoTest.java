@@ -49,6 +49,9 @@ public class sql2OSchoolDaoTest {
         schoolDao.add(school);
     assertEquals(1, schoolDao.getAll().size());
     }
-
+    @Test
+    public void noTypesReturns_0() throws Exception {
+        assertEquals(0, schoolDao.getAll().size());
+    }
 
 }
