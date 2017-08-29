@@ -25,15 +25,41 @@ You will need Gradle installed on your device.
 ✦✦✦✦✦✦✦✦✦✦✦✦
 
 | ✦ Behavior      | ✦ Example Input      | ✦ Example Output       |
-| ------------- | ------------- | ------------- |
-| ------------- | ------------- | ------------- |
-| ------------- | ------------- | ------------- |
-| ------------- | ------------- | ------------- |
+| Add A Type of School | schoolType: "Private" | "Private" |
+| Add A Course | courseTitle: "Math" courseDescription: "basic math." | "Math", "basic math." |
+| Add Student | name: "jim", age: "15", gender: "male", schoolType: "Private", grade: "10" | "jim", "15", "male", "Private", "10" |
+
+## EASY JSON/POSTMAN INPUTS 
+✦✦✦✦✦✦✦✦✦✦✦✦
+SCHOOL
+localhost:4567/school/new
+{
+	
+"schoolType": "Private"
+
+}
+
+STUDENT
+localhost:4567/students/new
+{
+  "name" : "Bob",
+  "age" : "15",
+  "gender": "male",
+  "schoolType" : "Highschool",
+  "grade" : "10"
+}
+
+COURSE
+localhost:4567/courses/new
+{
+  "courseTitle": "Math",
+  "courseDescription": "Basic Math Class"
+}
 
 ## Known Bugs
 ✦✦✦✦✦✦✦✦✦✦✦✦
 
-_Currently wip._
+_none known._
 
 ## Technologies Used
 ✦✦✦✦✦✦✦✦✦✦✦✦
